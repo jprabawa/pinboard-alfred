@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+require 'net/http'
+require 'uri'
+require 'escape'
+
+# Credentials
+u = "username"
+p = "password"
+
+# GET Params
+url = ARGV[0]
+description = Escape.uri_segment(ARGV[1..-1].join(" "))
+
+# Get response
+resp = nil
+http = Net::HTTP.new("api.pinboard.in", 443)
+http.use_ssl = true
+http.start { |http|
+  req = Net::HTTP::Get.new("/v1/posts/add?url=#{url}&description=#{description}")
+  req.basic_auth(u, p)
+  resp = http.request(req).body
+}
+
+# Print status
+puts resp.scan(/<result code="([^"]+)"/).first.first
