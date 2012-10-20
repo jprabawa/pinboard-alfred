@@ -23,7 +23,7 @@ Add a new URL from http://url with the title *"http://url"*:
 You can follow the lovely instructions by Andrew Pepperrell [here](http://preppeller.com/2011/12/11/creating-an-alfred-extension-101/).
 
 In the command text area, you use:
-<pre>/path/to/pinboard #{query}</pre> 
+<pre>/path/to/pinboard {query}</pre> 
 
 If you enable Notification Center, the script will output the Pinboard API status code on completion, e.g. "done" when the URL was added successfully.
 
